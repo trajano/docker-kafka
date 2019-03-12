@@ -11,3 +11,10 @@ This follows the instruction of the [Kafka quickstart](https://kafka.apache.org/
 ## Advertised host port
 
 The default advertised host port is `localhost:9092`.  If this needs to change set the environment `KAFKA_ADVERTISED_HOST_PORT`.
+
+## Commands
+
+* `kafka` starts Zookeeper and Kafka
+* `messages <topic>` shows the messages in a given topic.
+* `topics` lists all the topics
+
