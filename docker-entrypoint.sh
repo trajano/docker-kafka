@@ -2,7 +2,7 @@
 set -e
 
 if [ "$1" = 'kafka' ]; then
-    /opt/kafka/bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
+    KAFKA_HEAP_OPTS="${ZOOKEEPER_HEAP_OPTS}" /opt/kafka/bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
     exec /opt/kafka/bin/kafka-server-start.sh config/server.properties \
       --override listeners=INTERNAL://$HOSTNAME:9091,CLIENT://0.0.0.0:9092 \
       --override listener.security.protocol.map=CLIENT:PLAINTEXT,INTERNAL:PLAINTEXT \
