@@ -11,10 +11,10 @@ then
     --override advertised.listeners=CLIENT://${KAFKA_ADVERTISED_HOST_PORT:-localhost:9092},INTERNAL://$HOSTNAME:9091
 elif [ "$1" = 'messages' ]
 then
-  exec /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9091 --topic "$2" --from-beginning
+  exec /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server $HOSTNAME:9091 --topic "$2" --from-beginning
 elif [ "$1" = 'topics' ]
 then
-  exec /opt/kafka/bin/kafka-topics.sh --list --zookeeper localhost
+  exec /opt/kafka/bin/kafka-topics.sh --list --zookeeper $HOSTNAME
 fi
 
 exec "$@"
