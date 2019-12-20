@@ -7,7 +7,7 @@ RUN wget -q \
   tar -xzf kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz && \
   rm -rf kafka_${SCALA_VERSION}-${KAFKA_VERSION}/site-docs kafka_${SCALA_VERSION}-${KAFKA_VERSION}/bin/windows
 
-FROM openjdk:8u191-jre-alpine3.9
+FROM openjdk:12
 ARG SCALA_VERSION=2.12
 ARG KAFKA_VERSION=2.4.0
 COPY --chown=bin:bin --from=download-and-extract /tmp/kafka_${SCALA_VERSION}-${KAFKA_VERSION} /opt/kafka
