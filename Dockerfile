@@ -20,4 +20,4 @@ ENV ZOOKEEPER_HEAP_OPTS="-Xms64m -Xmx64m" \
 USER bin
 CMD [ "kafka" ]
 EXPOSE 9092 2181
-HEALTHCHECK nc -z localhost 9092
+HEALTHCHECK CMD nc -z localhost 9092
