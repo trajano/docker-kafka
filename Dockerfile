@@ -1,7 +1,8 @@
 FROM alpine AS download-and-extract
-ARG KAFKA_VERSION=kafka_2.11-2.1.0
+ARG KAFKA_PROTOCOL=2.1.2
+ARG KAFKA_VERSION=2.2.0
 WORKDIR /tmp
-RUN wget -q http://apache.mirror.globo.tech/kafka/2.1.0/${KAFKA_VERSION}.tgz && \
+RUN wget -q http://apache.mirror.globo.tech/kafka/${KAFKA_VERSION}/kafka_${KAFKA_PROTOCOL}-${KAFKA_VERSION}.tgz && \
   tar -xzf ${KAFKA_VERSION}.tgz && \
   rm -rf ${KAFKA_VERSION}/site-docs ${KAFKA_VERSION}/bin/windows
 
