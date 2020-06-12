@@ -4,6 +4,10 @@ set -e
 if [ "$1" = 'kafka' ]
 then
   KAFKA_HEAP_OPTS="${ZOOKEEPER_HEAP_OPTS}" /opt/kafka/bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
+  if [ -e /tmp/kafka-logs/meta.properties ]
+  then
+    mv /tmp/kafka-logs/meta.properties /tmp/kafka-logs/meta.properties.$(date '+%Y-%m-%dT%H:%M')
+  fi
   exec /opt/kafka/bin/kafka-server-start.sh config/server.properties \
     --override listeners=INTERNAL://$HOSTNAME:9091,CLIENT://0.0.0.0:9092 \
     --override listener.security.protocol.map=CLIENT:PLAINTEXT,INTERNAL:PLAINTEXT \
